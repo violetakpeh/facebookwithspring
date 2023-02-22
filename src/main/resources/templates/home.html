@@ -52,7 +52,7 @@
 
             </ul>
             <div class="d-flex navbar-right">
-                <img class="profile-image" th:src="@{/img/avatar.png}" alt="">
+                <img class="profile-image" th:src="@{/img/marketplace.png}" alt="">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
                         <a class ="nav-link" th:href="@{##}" >Username</a>
@@ -71,19 +71,14 @@
     <div class="row home-page">
         <div class="col-lg-3">
             <div class="shadow p-3 mb-5 bg-body rounded text-center">
-                <img class="profile-image-big mt-3" th:src="@{/img/avatar.png}" alt="">
+                <img class="profile-image-big mt-3" th:src="@{/img/marketplace.png}" alt="">
                 <h4 class="mt-2" th:text="${loggedUser.firstName + ' ' + loggedUser.lastName}" ></h4>
-                <p>I am a goal_oriented, friendly and enthusiastic individual.</p>
-                <p th:text="${'My birthday is ' + loggedUser.dateOfBirth}"></p>
-                <p><b>Lagos, Nigeria</b></p>
-                <p><a href="#">Website</a></p>
-                <p>Born May 1st</p>
-                <p>Joined May</p>
+                <p>A Decadev with a quack facebook app.</p>
             </div>
             <div class="shadow p-3 mb-5 bg-body rounded">
 
                 <form th:object="${users}" action="all-users" method="get">
-                    <button type="submit" class="btn btn-primary btn-md mt-3">Get all Users</button>
+                    <button type="submit" class="btn btn-primary btn-md mt-3">Add friends</button>
 
 
                 </form>

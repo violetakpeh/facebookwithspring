@@ -7,7 +7,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 class Project7ApplicationTests {
 
 	@Test
-	void contextLoads() {
+	void testToAddUserSuccessfully() {
+
 	}
 
 }

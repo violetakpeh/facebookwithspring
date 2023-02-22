@@ -9,38 +9,28 @@ import com.example.project7.service.PostService;
 import com.example.project7.repository.LikeRepository;
 import com.example.project7.model.PostLikes;
 import com.example.project7.model.User;
+import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+@AllArgsConstructor
 @Service
 public class PostServiceImpl implements PostService {
-    @Autowired
-    PostRepository postRepository;
+    private final PostRepository postRepository;
 
-    @Autowired
-    LikeRepository likeRepository;
+    private final LikeRepository likeRepository;
 
-    @Autowired
-    CommentRepository commentRepository;
+    private final CommentRepository commentRepository;
 
-    /**
-     * Method to save a post made by a user to the database
-     * @param user the user making the post
-     * @param post the post made
-     */
+
     public void addPost(User user, Post post) {
         post.setUser(user);
         postRepository.save(post);
     }
 
 
-    /**
-     * Method to get all the posts made by each user
-     * @param user the user that made the post
-     * @return the list of posts
-     */
     @Override
     public List<LikePosts> getAllPost(User user) {
         List<LikePosts> listOfLikePosts = new ArrayList<>();
@@ -84,29 +74,18 @@ public class PostServiceImpl implements PostService {
     }
 
 
-    /**
-     * Method to save an edited post to the database
-     * @param post
-     */
     @Override
     public void updatePost(Post post) {
         postRepository.save(post);
     }
 
-    /**
-     * Method to delete a post from the database
-     * @param post the post to be deleted
-     */
+
     @Override
     public void deletePost(Post post) {
         postRepository.delete(post);
     }
 
-    /**
-     * Method to get a post by the postId
-     * @param id the id of the post
-     * @return the post
-     */
+
     @Override
     public Post getPostById(Long id) {
         return postRepository.findByPostId(id);

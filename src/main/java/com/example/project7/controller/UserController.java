@@ -33,10 +33,8 @@ public class UserController {
     }
 
 
-
-
     @PostMapping("/register")
-    public String registerUser(User user, Model model, RedirectAttributes redirectAttributes) {
+    public String registerUser(User user, Model model, RedirectAttributes redirectAttributes) throws Exception {
         ResponseDTO response = userService.addUser(user);
 
         if (response.isStatus()) {
@@ -72,9 +70,7 @@ public class UserController {
 
     }
 
-    /**
-     * Method to get the logout page
-     */
+
     @GetMapping("/logout")
     public String logUserOut(Model model, HttpSession httpSession) {
 
@@ -87,15 +83,15 @@ public class UserController {
         return "redirect:/";
 
     }
-    @GetMapping("/all-users")
-    public String getAllUsers (Model model, HttpSession httpSession){
-        User user = (User) httpSession.getAttribute("logUser");
-        if (user==null) return "redirect:/";
-        List<User> users = userService.getAllUser();
-        model.addAttribute("all-users", users);
-
-        return "all-users";
-
-    }
+//    @GetMapping("/all-users")
+//    public String getAllUsers (Model model, HttpSession httpSession){
+//        User user = (User) httpSession.getAttribute("logUser");
+//        if (user==null) return "redirect:/";
+//        List<User> users = userService.getAllUser();
+//        model.addAttribute("all-users", users);
+//
+//        return "all-users";
+//
+//    }
 
 }

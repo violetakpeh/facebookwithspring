@@ -32,12 +32,6 @@ public class PostController {
     @Autowired
     LikeService likeService;
 
-    /**
-     * Method to get the home page
-     * @param request
-     * @param model
-     * @return
-     */
     @GetMapping("/home")
     public String getHomePage(HttpServletRequest request, Model model) {
         HttpSession session = request.getSession();
@@ -55,13 +49,7 @@ public class PostController {
         return "home";
     }
 
-    /**
-     * Method to get the update post page
-     * @param model
-     * @param httpSession
-     * @param postId
-     * @return
-     */
+
     @GetMapping("/updatepost")
     public String getUpdatePostPage(Model model, HttpSession httpSession, Long postId) {
         User user = (User) httpSession.getAttribute("logUser");
@@ -87,6 +75,9 @@ public class PostController {
 
     @PostMapping("/update")
     public String updatePost(HttpSession httpSession, Post post){
+        User user = (User) httpSession.getAttribute("logUser");
+        if (user==null) return "redirect:/";
+
         Post newPost = postService.getPostById(post.getPostId());
         newPost.setBody(post.getBody());
         postService.updatePost(newPost);

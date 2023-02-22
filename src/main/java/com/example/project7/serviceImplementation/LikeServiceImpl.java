@@ -6,23 +6,17 @@ import com.example.project7.model.PostLikes;
 import com.example.project7.repository.LikeRepository;
 import com.example.project7.service.LikeService;
 import com.example.project7.model.User;
+import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+@AllArgsConstructor
 @Service
 public class LikeServiceImpl implements LikeService {
-    @Autowired
-    LikeRepository likeRepository;
-    @Autowired
-    PostRepository postRepository;
 
-    /**
-     * Method to like and unlike a post
-     * @param user the user performing the action
-     * @param postId the id of the post
-     * @param action the action performed
-     * @return the result
-     */
+    private final LikeRepository likeRepository;
+    private final PostRepository postRepository;
+
     @Override
     public boolean likePost(User user, Long postId, String action){
         boolean result = false;
@@ -46,10 +40,6 @@ public class LikeServiceImpl implements LikeService {
     }
 
 
-    /**
-     * Method to delete all the likes in a post
-     * @param post the post with the likes to be deleted
-     */
     @Override
     @Transactional
     public void deleteAllLikesInPost(Post post) {

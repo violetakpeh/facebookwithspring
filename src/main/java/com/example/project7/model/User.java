@@ -28,7 +28,7 @@ public class User {
     private String dateOfBirth;
     @Column(nullable = false)
     private String gender;
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
-    private List<Friend> friendList;
+//    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+//    private List<Friend> friendList;
 
 }
